@@ -1,4 +1,4 @@
-# Django Project
+# U&I Trust (CFG2024)-(BNG)
 
 This project involves creating a web application using Django, designed to handle various functionalities such as user management, data processing, and more.
 
