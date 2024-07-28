@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+        <div class="grow">
+            <h5 class="text-16">Upload Data</h5>
+        </div>
+        <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+            <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                <a href="{% url 'admin_panel' %}" class="text-slate-400 dark:text-zink-200">Admin Panel</a>
+            </li>
+            <li class="text-slate-700 dark:text-zink-100">
+                Upload Data
+            </li>
+        </ul>
+    </div>
+    <div class="card" id="ordersTable">
+        <div class="card-body">
+            <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="flex items-center gap-3 mb-4">
+                    <h6 class="text-15 grow">Data Table</h6>
+                    <div class="shrink-0">
+                        <button type="submit"
+                                class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right">
+                        <tr>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500 text-center">
+                                S.No
+                            </th>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Type
+                            </th>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Last
+                                Updated
+                            </th>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500">Upload
+                                New Data / Additional
+                            </th>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500 text-center">
+                                Template
+                            </th>
+                            <th class="px-3.5 py-2.5 font-semibold border border-slate-200 dark:border-zink-500 text-center">
+                                Download Prev. Data
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="">
+                        <tr>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">1</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Timetable data</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ t.date }}</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                <input type="file" name="timetable_file"
+                                       class="cursor-pointer form-file border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500"
+                                       placeholder="Upload File">
+
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_template' 'timetable' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_existing_data' 'timetable' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">2</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Faculty data</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ f.date }}</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                <input type="file" name="faculty_file"
+                                       class="cursor-pointer form-file border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500"
+                                       placeholder="Enter your name">
+
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500  text-center">
+                                <a href="{% url 'download_template' 'faculty' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_existing_data' 'faculty' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500  text-center">3</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Room data</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ r.date }}</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+
+                                <input type="file" name="room_file"
+                                       class="cursor-pointer form-file border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500"
+                                       placeholder="Enter your name">
+
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_template' 'room' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_existing_data' 'room' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">4</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">Society data</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">{{ s.date }}</td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500">
+                                <input type="file" name="society_file"
+                                       class="cursor-pointer form-file border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500"
+                                       placeholder="Enter your name">
+
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_template' 'society' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                            <td class="px-3.5 py-2.5 border border-slate-200 dark:border-zink-500 text-center">
+                                <a href="{% url 'download_existing_data' 'society' %}">
+                                    <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Download
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

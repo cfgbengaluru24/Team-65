@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth group" data-layout="vertical" data-sidebar="light" data-sidebar-size="lg"
+      data-mode="light" data-topbar="light" data-skin="default" data-navbar="sticky" data-content="fluid" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Error 404 | TIET RBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta content="TIET Room Booking System" name="description">
+    <meta content="TIET" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <!-- Layout config Js -->
+    <script src="{% static 'assets/js/layout.js' %}"></script>
+    <!-- Icons CSS -->
+
+    <!-- StarCode CSS -->
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/starcode2.css' %}">
+</head>
+<body class="flex items-center justify-center min-h-screen py-16 bg-cover bg-auth-pattern dark:bg-auth-pattern-dark font-public">
+
+<div class="mb-0 border-none shadow-none lg:w-[500px] card bg-white/70 dark:bg-zink-500/70">
+    <div class="!px-10 !py-12 card-body">
+
+        <a href="{% url 'home' %}">
+            <img alt="" src="{% static 'images/TIET_RBS.png' %}" class="hidden h-6 mx-auto dark:block">
+            <img src="{% static 'images/TIET_RBS.png' %}" alt="" class="block h-6 mx-auto dark:hidden">
+
+        </a>
+
+        <div class="mt-10">
+            <img src="{% static 'images/error-404.png' %}" alt="" class="h-64 mx-auto">
+        </div>
+        <div class="mt-8 text-center">
+            <h4 class="mb-2 text-purple-500">ERROR 404</h4>
+            <p class="mb-6 text-slate-500 dark:text-zink-200">Page Not Found</p>
+            <a href="{% url 'home' %}"
+               class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     data-lucide="home" class="lucide lucide-home inline-block size-3 ltr:mr-1 rtl:ml-1">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="align-middle">Back to Home</span></a>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'assets/libs/choices.js/public/assets/scripts/choices.min.js' %}"></script>
+<script src="{% static 'assets/libs/@popperjs/core/umd/popper.min.js' %}"></script>
+<script src="{% static 'assets/libs/tippy.js/tippy-bundle.umd.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'assets/libs/prismjs/prism.js' %}"></script>
+<script src="{% static 'assets/libs/lucide/umd/lucide.js' %}"></script>
+<script src="{% static 'assets/js/starcode.bundle.js' %}"></script>
+</body>
+
+</html>
+

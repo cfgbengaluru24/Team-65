@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+                <div class="grow">
+                    <h5 class="text-16">Volunteer Register</h5>
+                </div>
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">Home</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">
+                        Volunteer Register
+                    </li>
+                </ul>
+            </div>
+    <div class="grid grid-cols-1 2xl:grid-cols-12">
+                <div class="col-span-12 2xl:col-start-3 2xl:col-span-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="grid grid-cols-1 gap-3 lg:grid-cols-4 nav-tabs form-wizard">
+                                <li class="group/item active">
+                                    <a href="#!" data-target="accountInfo" data-tab-id="1" class="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
+                                        <i data-lucide="rocket" class="block h-6 mx-auto fill-slate-200 dark:fill-zink-400 group-[.active]/item:fill-slate-200 dark:group-[.active]/item:fill-custom-500"></i>
+                                        <span class="block mt-3 font-medium text-15">1. Account Info</span>
+                                    </a>
+                                </li>
+                                <li class="group/item">
+                                    <a href="#!" data-target="personalInfo" data-tab-id="2" class="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
+                                        <i data-lucide="user-2" class="block h-6 mx-auto fill-slate-200 dark:fill-zink-400 group-[.active]/item:fill-slate-200 dark:group-[.active]/item:fill-custom-500"></i>
+                                        <span class="block mt-3 font-medium text-15">2. Personal Info</span>
+                                    </a>
+                                </li>
+                                <li class="group/item">
+                                    <a href="#!" data-target="addressInfo" data-tab-id="3" class="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
+                                        <i data-lucide="map-pin" class="block h-6 mx-auto fill-slate-200 dark:fill-zink-400 group-[.active]/item:fill-slate-200 dark:group-[.active]/item:fill-custom-500"></i>
+                                        <span class="block mt-3 font-medium text-15">3. Address Info</span>
+                                    </a>
+                                </li>
+                                <li class="group/item">
+                                    <a href="#!" data-target="completed" data-tab-id="4" class="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
+                                        <i data-lucide="party-popper" class="block h-6 mx-auto fill-slate-200 dark:fill-zink-400 group-[.active]/item:fill-slate-200 dark:group-[.active]/item:fill-custom-500"></i>
+                                        <span class="block mt-3 font-medium text-15">4. Completed</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="mt-5 tab-content">
+                                <div class="block tab-pane" data-tab-id="1" id="accountInfo">
+                                    <h5 class="mb-3">Account Info</h5>
+                                    <form action="#!">
+                                        <!--end grid-->
+                                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                            <div>
+                                                <label for="nameInput" class="inline-block mb-2 text-base font-medium">Name <span class="text-red-500">*</span></label>
+                                                <input type="text" id="nameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter your name" required="">
+                                                <div id="nameError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="usernameInput" class="inline-block mb-2 text-base font-medium">Current Role <span class="text-red-500">*</span></label>
+                                                <input type="text" id="usernameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter username" required="">
+                                                <div id="usernameError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="phoneNumberInput" class="inline-block mb-2 text-base font-medium">Phone Number <span class="text-red-500">*</span></label>
+                                                <input type="number" id="phoneNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Phone number" required="">
+                                                <div id="phoneNumberError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="emailAddressInput" class="inline-block mb-2 text-base font-medium">Email Address</label>
+                                                <input type="email" id="emailAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Email address" required="">
+                                                <div id="emailError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="passwordInput" class="inline-block mb-2 text-base font-medium">Password <span class="text-red-500">*</span></label>
+                                                <input type="password" id="passwordInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Password" required="">
+                                                <div id="passwordError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="passwordConfirmInput" class="inline-block mb-2 text-base font-medium">Password Confirm <span class="text-red-500">*</span></label>
+                                                <input type="password" id="passwordConfirmInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Password confirm" required="">
+                                                <div id="cpasswordError" class="text-red-500"></div>
+                                            </div>
+                                        </div><!--end grid-->
+                                        <!-- <div class="flex justify-between gap-2 mt-5">
+                                            <button type="button" data-action="prev" class="text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50"><i data-lucide="move-left" class="inline-block h-4 mr-1 rtl:rotate-180"></i> <span class="align-middle">Previous</span></button>
+                                            <button type="button" data-action="next" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Next</span> <i data-lucide="move-right" class="inline-block h-4 ml-1 rtl:rotate-180"></i></button>
+                                        </div> -->
+                                    </form>
+                                </div>
+                                <div class="hidden tab-pane" data-tab-id="2" id="personalInfo">
+                                    <h5 class="mb-3">Personal Info</h5>
+                                    <form action="#!">
+                                        <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+                                            <div>
+                                                <label for="FirstNameInput" class="inline-block mb-2 text-base font-medium">Preferences <span class="text-red-500">*</span></label>
+                                                <input type="text" id="Preferences" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Preferences" required="">
+                                                <div id="FirstNameInputError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="lastNameInput" class="inline-block mb-2 text-base font-medium">Age group <span class="text-red-500">*</span></label>
+                                                <input type="text" id="lastNameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Age group" required="">
+                                                <div id="lastNameInputError" class="text-red-500"></div>
+                                            </div>
+                                        </div><!--end grid-->
+                                        <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+                                            <div>
+                                                <label for="positionInput" class="inline-block mb-2 text-base font-medium">Hours of Commitment <span class="text-red-500">*</span></label>
+                                                <input type="text" id="positionInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Position" required="">
+                                                <div id="positionInputError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="joiningDateInput" class="inline-block mb-2 text-base font-medium">Education <span class="text-red-500">*</span></label>
+                                                <input type="text" id="positionInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Position" required="">
+                                                <div id="joiningDateInputError" class="text-red-500"></div>
+                                            </div>
+                                        </div><!--end grid-->
+                                        <div>
+                                            <label for="description" class="inline-block mb-2 text-base font-medium">Description</label>
+                                            <textarea class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="description" rows="5"></textarea>
+                                        </div>
+                                        <!-- <div class="flex justify-between gap-2 mt-5">
+                                                <button type="button" data-action="prev" class="text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50"><i data-lucide="move-left" class="inline-block h-4 mr-1"></i> <span class="align-middle">Previous</span></button>
+                                                <button type="button" data-action="next" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Next</span> <i data-lucide="move-right" class="inline-block h-4 ml-1"></i></button>
+                                            </div> -->
+                                    </form>
+                                </div>
+                                <div class="hidden tab-pane" data-tab-id="3" id="addressInfo">
+                                    <h5 class="mb-3">Address</h5>
+                                    <form action="#!">
+                                        <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+                                            <div>
+                                                <label for="addressLineInput" class="inline-block mb-2 text-base font-medium">Address Line 1</label>
+                                                <input type="text" id="addressLineInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Address line 1" required="">
+                                                <div id="addressLineInputError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="addressLine2" class="inline-block mb-2 text-base font-medium">Address Line 2</label>
+                                                <input type="text" id="addressLine2" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Address line 1" required="">
+                                                <div id="addressLine2Error" class="text-red-500"></div>
+                                            </div>
+                                        </div><!--end grid-->
+                                        <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2 lg:grid-cols-3">
+                                            <div>
+                                                <label for="cityAddressInput" class="inline-block mb-2 text-base font-medium">City</label>
+                                                <input type="text" id="cityAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="City" required="">
+                                                <div id="cityAddressInputError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="stateAddressInput" class="inline-block mb-2 text-base font-medium">State</label>
+                                                <input type="text" id="stateAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="State" required="">
+                                                <div id="stateAddressInputError" class="text-red-500"></div>
+                                            </div>
+                                            <div>
+                                                <label for="countryAddressInput" class="inline-block mb-2 text-base font-medium">Country</label>
+                                                <input type="text" id="countryAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Country" required="">
+                                                <div id="countryAddressInputError" class="text-red-500"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="flex justify-between gap-2 mt-5">
+                                                <button type="button" data-action="prev" class="duration-200 ease-linear mrtransition-all text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100"><i data-lucide="move-left" class="inline-block h-4 mr-1"></i> <span class="align-middle">Previous</span></button>
+                                                <button type="button" data-action="next" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Next</span> <i data-lucide="move-right" class="inline-block h-4 ml-1"></i></button>
+                                            </div> -->
+                                    </form>
+                                </div>
+                                <div class="hidden tab-pane" data-tab-id="4" id="completed">
+                                    <div class="px-4 py-6 mx-auto text-center lg:w-2/3">
+                                        <i data-lucide="check-circle" class="block w-10 h-10 mx-auto mb-4 text-green-500 fill-green-100 dark:fill-green-500/20 animate-icons"></i>
+                                        <h5 class="mb-2">Registration Successfully 🎉</h5>
+                                        <p class="mb-5 text-slate-500 text-15">We are thrilled to inform you that your registration has been successfully processed! Welcome to our community. Thank you for choosing us, and we look forward to serving you. Stay connected and enjoy your journey with us!</p>
+                                        <button type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Try Login</span> <i data-lucide="log-in" class="inline-block h-4 ltr:ml-1 rtl:mr-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-2 mt-5">
+                                <button type="button" data-action="prev" class="text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50"><i data-lucide="move-left" class="inline-block h-4 mr-1"></i> <span class="align-middle">Previous</span></button>
+                                <button type="button" data-action="next" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Next</span> <i data-lucide="move-right" class="inline-block h-4 ml-1"></i></button>
+                            </div>
+                        </div>
+                    </div><!--end card-->
+                </div>
+            </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/js/pages/form-wizard.init.js' %}"></script>
+{% endblock %}

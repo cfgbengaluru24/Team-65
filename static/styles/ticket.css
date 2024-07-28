@@ -1,0 +1,151 @@
+.ticket {
+    width: 38px;
+    height: auto;
+    margin-left: 10%;
+    row-gap: 10px;
+    margin-top: 5px;
+    margin-right: 7px;
+    position: relative;
+}
+
+.ticket-gap {
+    position: relative;
+    display: inline-block;
+}
+
+/* input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+  } */
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    height: 5px;
+    width: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    outline: none;
+    box-shadow: 15px 15px 25px rgba(2, 28, 53, 0.05);
+    z-index: 1;
+    opacity: 0; /* Hide by default */
+    transition: opacity 0.3s; /* Add transition effect */
+}
+
+input[type="checkbox"]:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    content: "\f111";
+    font-size: 16px;
+    top: 3px;
+    left: 3px;
+    color: #e2e6f3;
+}
+
+.ticket-gap:hover input[type="checkbox"],
+input[type="checkbox"]:checked {
+    opacity: 1; /* Make visible on hover and when checked */
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.08);
+}
+
+input[type="checkbox"]:checked:after {
+    font-weight: 900;
+    content: "\f058";
+    color: #478bfb;
+}
+
+
+.ticket-gap .Tooltip {
+    position: absolute;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    width: 120px;
+    height: 42px;
+    padding: 1px;
+    padding-left: 10px;
+    padding-top: 6px;
+    margin-left: 4px;
+    opacity: 0;
+}
+
+.ticket-gap:hover .Tooltip {
+    opacity: 1;
+}
+
+.cls-1 {
+    fill: #d4d8f3;
+}
+
+.cls-2 {
+    fill: #9aafe1;
+}
+
+.cls-3 {
+    fill: #424244;
+}
+
+.cls-4 {
+    opacity: 0.6;
+}
+
+.cls-6 {
+    opacity: 0.3;
+}
+
+
+.index-image {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 3px;
+}
+
+.index-tooltip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.index-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 8px;
+}
+
+@media (min-width: 760px) and (max-width: 1000px) {
+    .bot-nxt {
+        height: 15%;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .bot-nxt {
+        height: 15%;
+        bottom: 0;
+
+    }
+}
+
+@media (min-width: 1280px) {
+    .bot-nxt {
+        height: 15%;
+        bottom: 0;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1280px) {
+    .bot-nxt {
+        height: 15%;
+        bottom: 0;
+    }
+}

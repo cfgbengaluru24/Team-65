@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 50px;
+    box-shadow: 8px 16px 64px rgba(0, 0, 0, 0.25);
+    width: 55%;
+    height: 75%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.login-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width:48%;
+    padding: 0 5%;
+}
+
+.login-details > * {
+    margin-bottom: 20px;
+}
+
+@font-face {
+    font-family: 'Smooch Sans';
+    src: url('SSmoochSans-Black.ttf') format('ttf');
+}
+
+.welcome {
+    color: #1C1C1C;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Smooch Sans";
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom:0px;
+}
+
+.glad {
+    margin-top:-20px;
+    color: #1C1C1C;
+    font-size: 12px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word "
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: #1C1C1C;
+}
+
+.icon2 {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: #1C1C1C;
+}
+
+.inp {
+    width: 85%;
+    height: 40px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 12px;
+    padding: 0 0 0 40px;
+}
+form{
+    width:100%;
+}
+form >*{
+    margin-bottom:20px;
+}
+.Rememberme {
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.next-button {
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+	margin-bottom:0;
+}
+
+.forgot {
+    text-decoration: none;
+    color: #287bdd;
+}
+
+.container-image {
+    width: 50%;
+    padding: 0 3% 0 0;
+    padding: 0 3% 0 0;
+    overflow: hidden;
+}
+
+.login-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 32px;
+}
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Learning Path</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            padding: 20px;
+            background-color: rgb(40, 31, 212);
+            color: #fff;
+            border-radius: 10px;
+        }
+        .learning-path {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .step h2 {
+            margin-top: 0;
+            color: rgb(40, 31, 212);
+        }
+        .step p {
+            margin: 10px 0;
+        }
+        .step ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .step ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .step ul li a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: rgb(40, 31, 212);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .step ul li a:hover {
+            text-decoration: underline;
+        }
+        .status {
+            font-size: 14px;
+            color: #888;
+        }
+        .status span {
+            font-weight: bold;
+            color: rgb(40, 31, 212);
+        }
+        .assess-btn {
+            padding: 12px;
+            margin: 10px;
+            background-color: rgb(40, 31, 212);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            width: 100px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function updateCompletionStatus(step) {
+            const checkboxes = document.querySelectorAll(#${step} input[type="checkbox"]);
+            const checked = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            const total = checkboxes.length;
+            const completionStatus = document.querySelector(#${step} .status span);
+            completionStatus.textContent = ${Math.round((checked / total) * 100)}%;
+        }
+
+        function initializeCompletionStatus() {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => {
+                updateCompletionStatus(step.id);
+                const checkboxes = step.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', () => updateCompletionStatus(step.id));
+                });
+            });
+        }
+
+        window.onload = initializeCompletionStatus;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Volunteer Learning Path</h1>
+        </div>
+        <div class="learning-path">
+            <div class="step" id="step1">
+                <h2>Step 1: Introduction to 1:1 Tutoring</h2>
+                <p>Understand the fundamentals of 1:1 tutoring, including the benefits and challenges of personalized education.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step1">
+                        <a href="https://www.youtube.com/watch?v=example1" target="_blank">Introduction to Tutoring - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step1">
+                        <a href="https://www.youtube.com/watch?v=example2" target="_blank">Understanding Student Needs - Video 2</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step2">
+                <h2>Step 2: Training and Certification</h2>
+                <p>Complete the training modules provided by the NGO, and earn your certification as a qualified tutor.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step2">
+                        <a href="https://www.youtube.com/watch?v=example3" target="_blank">Training Module 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step2">
+                        <a href="https://www.youtube.com/watch?v=example4" target="_blank">Training Module 2</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video3-step2">
+                        <a href="https://www.youtube.com/watch?v=example5" target="_blank">Training Module 3</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video4-step2">
+                        <a href="https://www.youtube.com/watch?v=example6" target="_blank">Training Module 4</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step3">
+                <h2>Step 3: Familiarization with Curriculum</h2>
+                <p>Get acquainted with the curriculum and resources you'll be using to teach your students effectively.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step3">
+                        <a href="https://www.youtube.com/watch?v=example7" target="_blank">Curriculum Overview - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step3">
+                        <a href="https://www.youtube.com/watch?v=example8" target="_blank">Using Resources Effectively - Video 2</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video3-step3">
+                        <a href="https://www.youtube.com/watch?v=example9" target="_blank">Curriculum Overview - Video 3</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step4">
+                <h2>Step 4: Teaching Techniques and Strategies</h2>
+                <p>Learn various teaching techniques and strategies to engage students and facilitate effective learning.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step4">
+                        <a href="https://www.youtube.com/watch?v=example10" target="_blank">Engagement Techniques - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step4">
+                        <a href="https://www.youtube.com/watch?v=example11" target="_blank">Effective Teaching Strategies - Video 2</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step5">
+                <h2>Step 5: Technology Tools and Platforms</h2>
+                <p>Understand how to use the technology tools and platforms provided by the NGO for conducting online classes.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step5">
+                        <a href="https://www.youtube.com/watch?v=example12" target="_blank">Using Zoom for Classes - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step5">
+                        <a href="https://www.youtube.com/watch?v=example13" target="_blank">Google Classroom Tutorial - Video 2</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video3-step5">
+                        <a href="https://www.youtube.com/watch?v=example14" target="_blank">Technology Tools Overview - Video 3</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video4-step5">
+                        <a href="https://www.youtube.com/watch?v=example15" target="_blank">Using Online Resources - Video 4</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video5-step5">
+                        <a href="https://www.youtube.com/watch?v=example16" target="_blank">Interactive Learning Tools - Video 5</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step6">
+                <h2>Step 6: Student Assessment and Feedback</h2>
+                <p>Learn how to assess student performance and provide constructive feedback to help them improve.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step6">
+                        <a href="https://www.youtube.com/watch?v=example17" target="_blank">Assessment Techniques - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step6">
+                        <a href="https://www.youtube.com/watch?v=example18" target="_blank">Providing Feedback - Video 2</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+            <div class="step" id="step7">
+                <h2>Step 7: Continuous Learning and Improvement</h2>
+                <p>Engage in continuous learning opportunities and improve your tutoring skills through ongoing training and feedback.</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="video1-step7">
+                        <a href="https://www.youtube.com/watch?v=example19" target="_blank">Advanced Tutoring Skills - Video 1</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video2-step7">
+                        <a href="https://www.youtube.com/watch?v=example20" target="_blank">Reflective Teaching Practices - Video 2</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="video3-step7">
+                        <a href="https://www.youtube.com/watch?v=example21" target="_blank">Ongoing Professional Development - Video 3</a>
+                    </li>
+                </ul>
+                <div class="status">Completion Status: <span>0%</span></div>
+            </div>
+        </div>
+        <div class="assess-btn">Move to the Assessment directly</div>
+    </div>
+</body>
+</html>

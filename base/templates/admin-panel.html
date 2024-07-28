@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+        <div class="grow">
+            <h5 class="text-16">Admin Panel</h5>
+        </div>
+        <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+            <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                <a href="{% url 'home' %}" class="text-slate-400 dark:text-zink-200">Home</a>
+            </li>
+            <li class="text-slate-700 dark:text-zink-100">
+                Admin Panel
+            </li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-12 gap-x-5">
+        <div class="order-1 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-green-100 dark:bg-green-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-green-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-green-200/50 dark:text-green-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <div class="flex items-center justify-center bg-green-500 rounded-md size-12 text-15 text-green-50">
+                    <i data-lucide="book-text"></i>
+                </div>
+                <h5 class="mt-5 mb-2"><span class="counter-value" data-target="{{ no_of_bookings }}">0</span></h5>
+                <p class="text-slate-500 dark:text-slate-200">Total Bookings</p>
+            </div>
+        </div><!--end col-->
+        <div class="order-2 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-orange-100 dark:bg-orange-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-orange-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="list-filter"
+                   class="absolute top-0 stroke-1 size-32 text-orange-200/50 dark:text-orange-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <div class="flex items-center justify-center bg-orange-500 rounded-md size-12 text-15 text-orange-50">
+                    <i data-lucide="book-x"></i>
+                </div>
+                <h5 class="mt-5 mb-2"><span class="counter-value" data-target="{{ no_of_cancellations }}">0</span></h5>
+                <p class="text-slate-500 dark:text-slate-200">Cancellations</p>
+            </div>
+        </div><!--end col-->
+        <div class="order-3 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-sky-100 dark:bg-sky-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-sky-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="list-filter"
+                   class="absolute top-0 stroke-1 size-32 text-sky-200/50 dark:text-sky-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <div class="flex items-center justify-center rounded-md size-12 bg-sky-500 text-15 text-sky-50">
+                    <i data-lucide="users"></i>
+                </div>
+                <h5 class="mt-5 mb-2"><span class="counter-value" data-target="{{ no_of_users }}">0</span>
+                </h5>
+                <p class="text-slate-500 dark:text-slate-200">Users</p>
+            </div>
+        </div><!--end col-->
+        <div class="order-4 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-purple-100 dark:bg-purple-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-purple-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-purple-200/50 dark:text-purple-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <div class="flex items-center justify-center bg-purple-500 rounded-md size-12 text-15 text-purple-50">
+                    <i data-lucide="book-type"></i>
+                </div>
+                <h5 class="mt-5 mb-2"><span class="counter-value" data-target="{{ no_of_bookings_today }}">0</span></h5>
+                <p class="text-slate-500 dark:text-slate-200">Bookings today</p>
+            </div>
+        </div><!--end col-->
+
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Bookings</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'adminbookings' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Room
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Date
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Duration
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Reason
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for booking in bookings %}
+                            <tr>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ booking.user.First_name }} {{ booking.user.Last_name }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                    {% for room in booking.rooms.all %}
+                                        <li>
+                                        {{ room.block.name }}-{{ room.number }}
+                                        </li>
+                                    {% endfor %}
+                                </td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ booking.date }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ booking.starttime }}-{{ booking.endtime }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                    {% if booking.reason == 'OTHERS' %}
+                                        <textarea readonly
+                                                  class=" form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent text-uppercase">{{ booked_room.reason_text }}</textarea>
+                                    {% else %}
+                                        <span class="px-2.5 py-0.5 inline-block text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent text-uppercase">{{ booking.reason }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ bookings.count }}</b> of
+                            <b>{{ no_of_bookings }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col-->
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Rooms</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'home' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Block Code
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Block Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Room Count
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Room Available
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Action
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in block_counts %}
+                            <tr>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ i.block }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ i.block__name }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ i.num_rooms }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ i.num_disabled }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                    {#                                    <div class="flex gap-2">#}
+                                    {#                                        <a href="{% url 'roomoption' booked_room.block %}"#}
+                                    {#                                           class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 bg-slate-100 text-slate-500 hover:text-custom-500 hover:bg-custom-100 dark:bg-zink-600 dark:text-zink-200 dark:hover:bg-custom-500/20 dark:hover:text-custom-500"><i#}
+                                    {#                                                data-lucide="eye" class="inline-block size-3"></i> </a>#}
+                                    {##}
+                                    {#                                    </div>#}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ block_counts.count }}</b> of
+                            <b>{{ block_counts.count }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col-->
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Users</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'adminusers' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                First Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Last Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Designation
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Department
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Email
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for userdetail in userdetails %}
+                            <tr>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ userdetail.First_name }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ userdetail.Last_name }}</td>
+
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ userdetail.Designation }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ userdetail.Department }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ userdetail.email }}</td>
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ userdetails.count }}</b> of
+                            <b>{{ no_of_userdetails }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col-->
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Societies</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'home' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Society Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Society Incharge
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in society %}
+                            <tr>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ i.name }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                    N/A
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ society.count }}</b> of
+                            <b>{{ no_of_societies }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col-->
+    </div>
+{% endblock %}
+

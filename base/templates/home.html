@@ -1,0 +1,564 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>U&I Foundation</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="https://static.tildacdn.one/tild6361-3537-4031-a666-656336393839/UI_Logo_FINAL_Red.png" rel="icon">
+    <link href="{% static 'impact/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'impact/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'impact/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'impact/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'impact/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'impact/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{% static 'impact/css/main.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Impact
+    * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
+    * Updated: Jun 29 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header fixed-top">
+
+
+    <div class="branding d-flex align-items-cente" style="background-color:#411741;">
+
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="{% static 'impact/img/logo.png' %}" alt=""> -->
+                <h1 class="sitename" style="font-size: 45px;">U&I Trust</h1>
+                <span>.</span>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#hero" class="active">Home<br></a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+
+                    <li class="dropdown"><a href="#"><span>Start</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Student</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Circle Leader</a></li>
+                            <li><a href="#">Chapter Leader</a></li>
+                            <li><a href="#">Fellow</a></li>
+                        </ul>
+                    </li>
+                    <li style="color:white;  cursor:pointer; font-size:12px; font-weight:700;padding : 10px; margin:4px; border-radius:20px; background-color:black">Donate Now</li>
+
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section accent-background">
+
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-5 justify-content-between">
+                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <span style="font-family: Georgia, 'Times New Roman', Times, serif; color: white; font-size: 30px;">"Building a new way of learning and mentoring for students with low-income communities accross India."</span>
+
+                    <h2><span class="accent" style="font-size: 80px;">U&I TRUST</span></h2>
+
+                    <p style="font-size: 15px;">
+                        "The U&I Foundation India is a non-profit organization focused on empowering underprivileged
+                        communities through education and social initiatives. Founded with the mission to create
+                        positive change, U&I works primarily in urban and rural areas to provide quality education to
+                        children from disadvantaged backgrounds. The foundation runs various programs, including
+                        after-school tutoring, vocational training, and life skills workshops, to ensure holistic
+                        development. Additionally, U&I engages volunteers to mentor and teach, fostering a sense of
+                        community and social responsibility."
+                    </p>
+
+                </div>
+                <div class="col-lg-5 order-1 order-lg-2" style="border-radius: 80px;">
+                    <img src="{% static 'impact/img/UI_logo.png' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="icon-boxes position-relative" style="background-color: rgb(255, 255, 255);;" data-aos="fade-up"
+             data-aos-delay="200">
+            <div class="container position-relative">
+                <div class="row gy-4 mt-5">
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="icon-box" style="background-color: rgb(255, 255, 255); border-radius: 35px;">
+                            <img src="https://optim.tildacdn.one/tild3636-6362-4635-b762-373661353439/-/resize/602x/-/format/webp/49.png"
+                                 class="img-fluid" alt="">
+
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="icon-box" style="background-color: rgb(255, 255, 255); border-radius: 35px;">
+
+                            <img src="https://optim.tildacdn.one/tild6362-6661-4237-a166-633830373733/-/resize/610x/-/format/webp/50.png"
+                                 class="img-fluid" alt="">
+
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="icon-box" style="background-color: rgb(255, 255, 255); border-radius: 35px;">
+                            <img src="https://optim.tildacdn.one/tild3437-6264-4634-b635-643533373231/-/resize/612x/-/format/webp/51.png"
+                                 class="img-fluid" alt="">
+
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="icon-box" style="background-color: rgb(255, 255, 255); border-radius: 35px;">
+                            <img src="https://optim.tildacdn.one/tild6138-3039-4338-b865-363361336532/-/resize/612x/-/format/webp/52.png"
+                                 class="img-fluid" alt="">
+
+                        </div>
+                    </div><!--End Icon Box -->
+
+                </div>
+            </div>
+        </div>
+
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2 style="font-size: 60px; font-family: 'Times New Roman', Times, serif;">About Us<br></h2>
+            <p style="font-size: 20px;">U&I is a non-profit organization that is committed to creating long-term,
+                positive social change in education, child and women welfare and mental health. Working with neglected
+                communities in nine cities across India, U&I directly impacts 850 people on a weekly basis.
+
+                What began as a small group of friends passionate about social change has become an organization which
+                has impacted the lives of hundreds of at-risk individuals and inspired thousands to be the change they
+                want to see.
+                <br>
+                U&I runs two main initiatives -
+                <br>
+                U&I Teach: The Teach program impacts underprivileged children through after-school education conducted
+                in 21 Learning Centers across the country.
+                <br>
+                U&I Care: The Care program focuses on the rehabilitation and care of special-needs individuals and
+                trafficked women in government-run homes in Bangalore.</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            <div class="row gy-4">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 20px;">WHY U&I TEACH?</h3>
+                    <img src="{% static 'impact/img/about.jpg' %}" class="img-fluid rounded-4 mb-4" alt="">
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="content ps-0 ps-lg-5">
+                        <p class="fst-italic">
+                        <p style="font-size: 20px;">U&I Teach operates with a goal of running high-quality Learning
+                            Centers for underprivileged children. In India today overcrowding in government schools and
+                            lack of resources has led to a high dropout rate of 90% by high school. U&I tackles this
+                            problem through our free, afterschool Learning Centers where children get access to quality
+                            education and individualized mentorship. Our core strengths include:</p>
+
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">Leveraging the power of trained volunteer teachers to tutor children in Math, English, Science and Social Studies.</span>
+                            </li>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">21 Learning Centers across nine cities reaching 850 children</span>
+                            </li>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">Providing an incredibly low tutor-student ratio of 1:3.</span>
+                            </li>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">Personalized attention through which learning is maximized.</span>
+                            </li>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">Role models for first-generation learners.</span>
+                            </li>
+                            <li><i class="bi bi-check-circle-fill"></i> <span style="font-size: 20px;">Holistic education through our 360 Care program which integrates career days, personality development training, counseling sessions, and field trips, as well as setting up libraries.</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="position-relative mt-4">
+                            <img src="{% static 'impact/img/about-2.jpg' %}" class="img-fluid rounded-4" alt="">
+                            <a href="https://youtu.be/GRT5_defIHM?si=hfJz2tqQd5FIIpZS"
+                               class="glightbox pulsating-play-btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+        <div class="container">
+
+            <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
+                    {
+                      "loop": true,
+                      "speed": 600,
+                      "autoplay": {
+                        "delay": 5000
+                      },
+                      "slidesPerView": "auto",
+                      "pagination": {
+                        "el": ".swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                      },
+                      "breakpoints": {
+                        "320": {
+                          "slidesPerView": 2,
+                          "spaceBetween": 40
+                        },
+                        "480": {
+                          "slidesPerView": 3,
+                          "spaceBetween": 60
+                        },
+                        "640": {
+                          "slidesPerView": 4,
+                          "spaceBetween": 80
+                        },
+                        "992": {
+                          "slidesPerView": 6,
+                          "spaceBetween": 120
+                        }
+                      }
+                    }
+                </script>
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3835-3562-4731-b965-666566396534/-/resize/240x/-/format/webp/Visa_Logo.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3230-3534-4133-b030-363430306432/-/resize/240x/-/format/webp/Amazon.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild6139-3263-4333-b232-306364663834/-/resize/240x/-/format/webp/Thomson_Reuters.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3138-3463-4661-b562-396530323930/-/resize/240x/-/format/webp/Cisco.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3939-6464-4261-a633-363064366663/-/resize/240x/-/format/webp/Soliton_New.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3439-3366-4531-b264-393333383630/-/resize/240x/-/format/webp/Yahoo_Logo.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild6634-6530-4436-b765-633538383031/-/resize/240x/-/format/webp/Euromonitor.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img
+                            src="https://optim.tildacdn.one/tild3063-3863-4934-b964-633930376231/-/resize/240x/-/format/webp/Epicor.png"
+                            class="img-fluid" alt=""></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /Clients Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2 style="font-size: 50px;">Our Services</h2>
+            <p style="font-size: 35px;">Empowering life through education, U&i foundation builds brighter future for
+                underprivileged children.</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item  position-relative">
+
+                        <h3>TUITIONS PROGRAM</h3>
+                        <p style="font-size: 20px;">The main focus of the programme is to help our students achieve
+                            satisfactory scores in their school examinations, so they clear their grades and move up the
+                            ladder. Tuition centers focus on ensuring that the learning lags of students are identified
+                            and strategies are employed to help them build the foundational skills they are lacking.
+                            The subjects taught are Mathematics, Science, Social Science, Commerce and Economics.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-item position-relative">
+
+                        <h3>ENGLISH PROGRAM</h3>
+                        <p style="font-size: 20px;">The English program is tailored to the child's learning level based
+                            on a pre-assessment that evaluates their listening, speaking, reading, writing and grammar.
+                            There are two main levels- Pre Primary and Primary.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-item position-relative">
+
+                        <h3>HOLISTIC DEVELOPMENT</h3>
+                        <p style="font-size: 20px;">Seeks to guide students in developing essential life skills through
+                            a 3-6 hour programme implemented in tandem with their academic classes.
+                            Our learning centers choose from a set of 9 programmes, according to what would be most
+                            suited to the skill lag of students</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-item position-relative">
+
+                        <h3>COUNSELING</h3>
+                        <p style="font-size: 20px;">Support students to grow holistically and be well-rounded
+                            individuals.
+                            We partner with professional counsellors to deliver one-on-one or group sessions to our
+                            children.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-item position-relative">
+
+                        <h3>LIFE-INFLUENCING FUNCTIONAL TRAINING (LIFT)</h3>
+                        <p style="font-size: 20px;">Lift works towards the transition readiness of young adults for when
+                            they leave their shelter homes at the age of 18. The students enter the LIFT program at 15
+                            years of age and begin learning valuable, practical life skills to equip them for the real
+                            world.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-item position-relative">
+
+                        <h3>READING PROGRAM </h3>
+                        <p style="font-size: 20px;">Weekly guided reading sessions are conducted at the centers with the
+                            help of library books.
+                        </p>
+                    </div>
+                </div><!-- End Service Item -->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Services Section -->
+
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section">
+
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="content px-xl-5">
+                        <h3 style="font-size: 40px;"><span>Frequently Asked </span><strong>Questions</strong></h3>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="faq-container">
+                        <div class="faq-item faq-active">
+                            <h3><span class="num">1.</span> <span>What is U&I Foundation India?
+                </span></h3>
+                            <div class="faq-content">
+                                <p>U&I Foundation India is a non-profit organization dedicated to empowering
+                                    underprivileged communities through education and social initiatives.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3><span class="num">2.</span> <span>What are the main programs offered by U&I?
+                </span></h3>
+                            <div class="faq-content">
+                                <p>U&I offers after-school tutoring, vocational training, life skills workshops, and
+                                    various community outreach programs aimed at holistic development.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3><span class="num">3.</span> <span>How many children benefit from U&I’s programs annually?
+                </span></h3>
+                            <div class="faq-content">
+                                <p>Over 2,500 children benefit from U&I’s educational programs each year.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3><span class="num">4.</span> <span>How many volunteers does U&I engage?</span></h3>
+                            <div class="faq-content">
+                                <p>U&I engages over 2,000 volunteers who contribute their time and skills to teaching
+                                    and mentoring.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3><span class="num">5.</span> <span>How many Learning Centers does U&I operate?
+                </span></h3>
+                            <div class="faq-content">
+                                <p>U&I operates more than 50 Learning Centers across various cities in India.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /Faq Section -->
+<div class="chat" style="margin: 4px; padding: 4px">
+    <iframe 
+src="https://www.chatbase.co/chatbot-iframe/d3sjgvPdLkZMZJYc5jpkB"
+width="20%"
+style="height: 60%; position: fixed; bottom :-40px ; right :0px ;z-index:5 ;border-radius:10px ; paddin: 4px  "
+frameborder="0"
+></iframe>
+</div>
+
+</main>
+
+<footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+        <div class="row gy-4">
+            <div class="col-lg-5 col-md-12 footer-about">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <span class="sitename">U&I Trust</span>
+                </a>
+
+                <div class="social-links">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#">Volunteering</a></li>
+                    <li><a href="#">Skills Development</a></li>
+                    <li><a href="#">Holistic Development</a></li>
+                    <li><a href="#">Counseling</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                <h4>Contact Us</h4>
+                <p>A: 8/1, Gover Road,</p>
+                <p>Cox Town, Bangalore
+                </p>
+                <p>
+                    560 005</p>
+                <p class="mt-4"><strong>Phone:</strong> <span>+919739084991</span></p>
+                <p><strong>Email:</strong> <span>info@example.com</span></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">U & I Trust</strong> <span>All Rights Reserved</span>
+        </p>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you've purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+            Designed by Team 65
+        </div>
+    </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'impact/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'impact/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'impact/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'impact/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'impact/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'impact/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'impact/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'impact/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+<!-- Main JS File -->
+
+<script src="{% static 'impact/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

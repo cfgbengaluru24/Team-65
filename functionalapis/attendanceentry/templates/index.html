@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Attendance Entry System</title>
+</head>
+<body>
+    <h1>Attendance Entry System</h1>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Attendance Percentage</th>
+            <th>Status</th>
+        </tr>
+        {% for student in students %}
+        <tr onclick="location.href='{% url 'toggle_attendance' student.id %}'" style="cursor:pointer;">
+            <td>{{ student.name }}</td>
+            <td>{{ student.attendance_percentage }}%</td>
+            <td>{{ student.is_present|yesno:'P,A' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="topic_taught" placeholder="Enter the topic taught today"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,362 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% load custom_filters %}
+
+
+{% block content %}
+    <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+        <div class="grow">
+            <h5 class="text-16">Student</h5>
+        </div>
+        <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+            <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                <a href="{% url 'home' %}" class="text-slate-400 dark:text-zink-200">Home</a>
+            </li>
+            <li class="text-slate-700 dark:text-zink-100">
+                Stu
+            </li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-12 gap-x-5">
+        <div class="order-1 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-green-100 dark:bg-green-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-green-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-green-200/50 dark:text-green-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <h3 class="text-slate-500 dark:text-slate-200">Name</h3>
+
+                <p class="mt-5 mb-2" style="font-size:15px">Dhiraj (DJ)</p>
+            </div>
+        </div><!--end col-->
+
+        <div class="order-2 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-orange-100 dark:bg-orange-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-orange-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="list-filter"
+                   class="absolute top-0 stroke-1 size-32 text-orange-200/50 dark:text-orange-500/20 ltr:-right-10 rtl:-left-10"></i>
+
+                <h3 class="text-slate-500 dark:text-slate-200">Attendance</h3>
+                <p class="mt-5 mb-2" style="font-size:15px"><span class="counter-value"
+                                                                  data-target="{{ no_of_attendance }}"">0</span>
+                </p>
+
+
+            </div>
+        </div><!--end col-->
+        <div class="order-3 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-sky-100 dark:bg-sky-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-sky-500/20 relative overflow-hidden">
+            <button onclick="window.location.href='{% url 'student' %}'" name="TestScore">
+                <div class="card-body">
+                    <i data-lucide="list-filter"
+                       class="absolute top-0 stroke-1 size-32 text-sky-200/50 dark:text-sky-500/20 ltr:-right-10 rtl:-left-10"></i>
+                    <h3 class="text-slate-500 dark:text-slate-200">Test Score</h3>
+                    <p class="mt-5 mb-2" style="font-size:15px; text-align: left;">
+                        <span class="counter-value" data-target="{{ no_of_attendance }}">0</span>
+                    </p>
+                </div>
+            </button>
+        </div><!--end col-->
+
+        <div class="order-4 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-purple-100 dark:bg-purple-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-purple-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-purple-200/50 dark:text-purple-500/20 ltr:-right-10 rtl:-left-10"></i>
+
+                <h3 class="text-slate-500 dark:text-slate-200">Feedback</h3>
+
+                <p class="mt-5 mb-2" style="font-size:15px">This student is very engaged. </p>
+            </div>
+        </div><!--end col-->
+        
+    <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Student Feedback Data</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'home' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q1
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q2
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q3
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q4
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q5
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in arr %}
+                            <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 1 }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 2 }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 3}}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 4}}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 5}}</td>
+                                
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ arr.count }}</b> of
+                            <b>{{ arr.count }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Volunteer Feedback Data</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'home' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q1
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q2
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q3
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q4
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Q5
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in arr %}
+                            <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'It was Awse..' }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Not underst..' }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'It was Awse..'}}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Not underst..' }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'It was Awse..' }}</td>
+                                
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ block_counts.count }}</b> of
+                            <b>{{ block_counts.count }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">RSVP</h6>
+                    <div class="shrink-0">
+                        <a href="{% url 'home' %}">
+                            <button type="button"
+                                    class="flex rounded-full items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-sky-500 bg-white btn hover:text-sky-500 hover:bg-sky-100 focus:text-sky-500 focus:bg-sky-100 active:text-sky-500 active:bg-sky-100 dark:bg-zink-700 dark:hover:bg-sky-500/10 dark:focus:bg-sky-500/10 dark:active:bg-sky-500/10">
+                                <i data-lucide="maximize-2"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="-mx-5 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                        <tr>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                #
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Name
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Monday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Tuesday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Wednesday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Thursday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Friday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Saturday
+                            </th>
+                            <th class="sort px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500 ltr:text-left rtl:text-right">
+                                Sunday
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in arr %}
+                            <tr>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ forloop.counter }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Jotika' }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Yes' }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Yes' }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'No' }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'No' }}</td>
+                                    <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Yes' }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'No' }}</td>
+                                <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">{{ 'Yes' }}</td>
+                                
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col items-center mt-5 md:flex-row">
+                    <div class="mb-4 grow md:mb-0">
+                        <p class="text-slate-500 dark:text-zink-200">Showing <b>{{ block_counts.count }}</b> of
+                            <b>{{ block_counts.count }}</b> Results</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col--><!--end grid-->
+<div class="order-11 2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="grow">
+                                        <a href="#!" class="group/item toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heart" class="lucide lucide-heart size-5 text-slate-500 dark:text-zink-200 fill-slate-200 dark:fill-zink-500 transition-all duration-150 ease-linear group-[.active]/item:text-yellow-500 dark:group-[.active]/item:text-yellow-500 group-[.active]/item:fill-yellow-200 dark:group-[.active]/item:fill-yellow-500/20 group-hover/item:text-yellow-500 dark:group-hover/item:text-yellow-500 group-hover/item:fill-yellow-200 dark:group-hover/item:fill-yellow-500/20"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></a>
+                                    </div>
+                                    <div class="relative dropdown shrink-0">
+                                        <button id="sellersAction1" data-bs-toggle="dropdown" class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-horizontal" class="lucide lucide-more-horizontal size-3"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                        <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="sellersAction1">
+                                            <li>
+                                                <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye inline-block mr-1 size-3"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg> <span class="align-middle">Overview</span></a>
+                                            </li>
+                                            <li>
+                                                <a data-modal-target="addSellerModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-edit" class="lucide lucide-file-edit inline-block mr-1 size-3"><path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z"></path></svg> <span class="align-middle">Edit</span></a>
+                                            </li>
+                                            <li>
+                                                <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" class="lucide lucide-trash-2 inline-block mr-1 size-3"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg> <span class="align-middle">Delete</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center mx-auto rounded-full size-16 bg-slate-100 outline outline-slate-100 outline-offset-1 dark:bg-zink-600 dark:outline-zink-600">
+                                    <img src="assets/images/adwords.png" alt="" class="h-10 rounded-full">
+                                </div>
+
+                                <div class="mt-4 mb-6 text-center">
+                                    <h6 class="text-16"><a href="#!">Previous Mapping</a></h6>
+                                    <p class="text-slate-500 dark:text-zink-200">On 21st July</p>
+                                </div>
+                                <div class="grid grid-cols-1 gap-5 text-center divide-y md:divide-y-0 md:divide-x sm:grid-cols-3 2xl:grid-cols-12 divide-slate-200 divide-dashed dark:divide-zink-500 rtl:divide-x-reverse">
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">4.5k</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Students</p>
+                                    </div><!--end col-->
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">310</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Volunteers</p>
+                                    </div><!--end col-->
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">$235.3k</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Revenue</p>
+                                    </div><!--end col-->
+                                </div><!--end grid-->
+                            </div>
+                        </div><!--end card-->
+                    </div>
+    <div class="order-11 2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="grow">
+                                        <a href="#!" class="group/item toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heart" class="lucide lucide-heart size-5 text-slate-500 dark:text-zink-200 fill-slate-200 dark:fill-zink-500 transition-all duration-150 ease-linear group-[.active]/item:text-yellow-500 dark:group-[.active]/item:text-yellow-500 group-[.active]/item:fill-yellow-200 dark:group-[.active]/item:fill-yellow-500/20 group-hover/item:text-yellow-500 dark:group-hover/item:text-yellow-500 group-hover/item:fill-yellow-200 dark:group-hover/item:fill-yellow-500/20"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></a>
+                                    </div>
+                                    <div class="relative dropdown shrink-0">
+                                        <button id="sellersAction1" data-bs-toggle="dropdown" class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-horizontal" class="lucide lucide-more-horizontal size-3"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                        <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="sellersAction1">
+                                            <li>
+                                                <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye inline-block mr-1 size-3"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg> <span class="align-middle">Overview</span></a>
+                                            </li>
+                                            <li>
+                                                <a data-modal-target="addSellerModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-edit" class="lucide lucide-file-edit inline-block mr-1 size-3"><path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z"></path></svg> <span class="align-middle">Edit</span></a>
+                                            </li>
+                                            <li>
+                                                <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" class="lucide lucide-trash-2 inline-block mr-1 size-3"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg> <span class="align-middle">Delete</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center mx-auto rounded-full size-16 bg-slate-100 outline outline-slate-100 outline-offset-1 dark:bg-zink-600 dark:outline-zink-600">
+                                    <img src="assets/images/adwords.png" alt="" class="h-10 rounded-full">
+                                </div>
+
+                                <div class="mt-4 mb-6 text-center">
+                                    <h6 class="text-16"><form method="POST" action="{% url 'circleLeader' %}"><a href="#!">Upcoming Mapping</a></form></h6>
+                                    <p class="text-slate-500 dark:text-zink-200">On 21st July</p>
+                                </div>
+                                <div class="grid grid-cols-1 gap-5 text-center divide-y md:divide-y-0 md:divide-x sm:grid-cols-3 2xl:grid-cols-12 divide-slate-200 divide-dashed dark:divide-zink-500 rtl:divide-x-reverse">
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">{{ val1 }}</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Students</p>
+                                    </div><!--end col-->
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">{{ val2 }}</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Volunteers</p>
+                                    </div><!--end col-->
+                                    <div class="p-2 2xl:col-span-4">
+                                        <h6 class="mb-1">{{ val3 }}</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">Revenue</p>
+                                    </div><!--end col-->
+                                </div><!--end grid-->
+                            </div>
+                        </div><!--end card-->
+                    </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,333 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/ticket.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <form id="bookingForm" method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+            <div class="grow">
+                <h5 class="text-16">Dashboard</h5>
+            </div>
+            <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                <li
+                        class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                    <a href="{% url 'home' %}" class="text-slate-400 dark:text-zink-200">Home</a>
+                </li>
+                <li class="text-slate-700 dark:text-zink-100">
+                    Dashboard
+                </li>
+            </ul>
+        </div>
+
+        <div class="grid grid-row-12 2xl:grid-cols-12 gap-l-5">
+
+            {% for block, room_list in room_status.items %}
+                <div class="" id="{{ block.code }}-1">
+                    <div class="" id="{{ block.code }}-2">
+                        <div>
+                            {{ block.name }} BLOCK
+                        </div>
+                        <div>
+                            <div>
+                                {% for list,status,co in room_list %}
+                                    <div class="ticket-gap">
+                                        {% if status == 0 or status == 2 %}
+                                        {% else %}
+                                            <input type="checkbox" name="room" id="room" class="checkbox"
+                                                   value="{{ list.block }}{{ list.number }}">
+                                        {% endif %}
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             viewBox="0 0 181 321" data-name="p100"
+                                             data-categories="Labs p40"
+                                             data-tooltip="default" data-tooltip-placement="bottom-end"
+                                             data-tooltip-content="<img class='index-image' src={% static 'images/labphoto.jpg' %}>
+                                        <div class='index-con'>
+                                            <div class='index-tooltip'>
+                                                <div>Available:</div>
+                                                <div>{% if status == 1 %} Yes {% else %} No {% endif %}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Exam Capacity:</div>
+                                                <div>{{ list.capacity }}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Seating Capacity:</div>
+                                                <div>{{ list.seating_cap }}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Air Conditioning:</div>
+                                                <div>{{ list.AC }}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Microphone:</div>
+                                                <div>{{ list.Mic }}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Projector:</div>
+                                                <div>{{ list.Projector }}</div>
+                                            </div>
+                                            <div class='index-tooltip'>
+                                                <div>Camera:</div>
+                                                <div>{{ list.Camera }}</div>
+                                            </div>
+                                        </div>" type="button" class="ticket" aria-describedy="tippy-14">
+
+                                            <g id="Layer_2" data-name="Layer 2">
+                                                <g id="OBJECTS">
+                                                    <path class="cls-1"
+                                                          d="M165.46,181h-8.23a4.9,4.9,0,0,1-9.8,0H136.62a4.9,4.9,0,0,1-9.8,0H116a4.9,4.9,0,0,1-9.8,0H95.4a4.9,4.9,0,0,1-9.8,0H74.79a4.9,4.9,0,0,1-9.8,0H54.18a4.9,4.9,0,0,1-9.8,0H33.57a4.9,4.9,0,0,1-9.8,0H15.54A15.46,15.46,0,0,1,0,196.39V305.5A15.5,15.5,0,0,1,15.5,321h8.27a4.9,4.9,0,1,1,9.8,0H44.38a4.9,4.9,0,1,1,9.8,0H65a4.9,4.9,0,1,1,9.8,0H85.6a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h8.27A15.5,15.5,0,0,1,181,305.5V196.39A15.46,15.46,0,0,1,165.46,181Z"/>
+                                                    <path class="cls-2"
+                                                          d="M158.85,189H22.15A23.39,23.39,0,0,1,8,202.93v95.75A23.68,23.68,0,0,1,22.15,313h136.7A23.68,23.68,0,0,1,173,298.68V202.93A23.39,23.39,0,0,1,158.85,189Z"/>
+                                                    <path class="cls-1"
+                                                          d="M157.48,191h-134A25.17,25.17,0,0,1,10,204.27v93A25.57,25.57,0,0,1,23.52,311h134A25.57,25.57,0,0,1,171,297.3v-93A25.17,25.17,0,0,1,157.48,191Z"/>
+                                                    <path class="cls-3"
+                                                            {% if list.number|slice:"-3:-2" == "1" %}
+                                                          d="M63,246.48v4H30.48v-4l9.6-2.44H54.32Zm-9.13-46,1.11.79-.32,11.17v21.79c0,5.27.08,10.85.24,16.28H39.21c.16-5.43.24-11,.24-16.28V209.35l-6.53.63v-5.11Z"
+                                                                />
+                                                            {% elif list.number|slice:"-3:-2" == "2" %}
+                                                                d="M29,242.7c3.38-3.3,6.76-6.53,9.91-9.67C46.14,225.71,50,221.15,50,213.68c0-6-2.83-9.28-7.39-9.28a15.44,15.44,0,0,0-7.4,1.73l6.45-3.78-1,7.71c-.79,6-3.85,7.16-6.37,7.16a6.13,6.13,0,0,1-5.59-3.46c0-8.81,8.73-13.61,19.27-13.61,11.88,0,17,6,17,13.68,0,7.87-6.6,14.48-20.05,22.19-2.84,1.65-5.59,3.22-8.26,4.87l-1.26-1.41H65.49v11H29Z"/>
+                                                            {% elif list.number|slice:"-3:-2" == "3" %}
+                                                                d="M41.42,222.8c5.58,0,9-2.52,9-9.44,0-6.13-2.75-9-7.39-9a21.26,21.26,0,0,0-5.59,1.1l5.27-3.15-1,7.63c-.55,4.25-3.46,5.66-6.37,5.66a5.74,5.74,0,0,1-4.64-2.36c-.55-9.2,7.39-13.13,16.12-13.13,12.59,0,18.17,5.58,18.17,12.66,0,5.27-3.93,11.09-15.57,12.51v-1.26c12.82,1.1,17.07,5.82,17.07,13.69,0,8.1-7.39,14-20.45,14C33.79,251.75,28,246.48,28,238a5.47,5.47,0,0,1,5.27-3.85c3.47,0,5.75,1.57,6.3,7.55l.7,7.94-4-3.38a9.67,9.67,0,0,0,4.64,1.18c6.61,0,10.15-3.07,10.15-10.38,0-6.37-3.38-9.68-9.28-9.68H39.45V222.8Z"/>
+                                                            {% elif list.number|slice:"-3:-2" == "4" %}
+                                                                d="M26.31,241.91V233.5L49,201.41H59.35v49.08h-13v-41.3h2.91L31.66,234.44l-1.57-2.75h36.1v10.22Z"/>
+                                                            {% elif list.number|slice:"-3:-2" == "5" %}
+                                                                d="M33.79,222.49a34.59,34.59,0,0,1,12.9-2.13c12.74,0,20.29,5.27,20.29,15.34,0,11-9.6,16.05-21.87,16.05C34.18,251.75,28,246.16,28,238a5.73,5.73,0,0,1,5.5-3.85c3.54,0,5.67,2,6.06,7.16l.55,7.7-2.28-2.67a8.3,8.3,0,0,0,4.56,1.1c5,0,8.89-3.7,8.89-10.15,0-7.07-3.07-10.77-8.42-10.77a29.85,29.85,0,0,0-7.47.86l-2.2-2,1.65-24H64.86v11H36.38l3.78-8.5-1.34,19.75h-5Z"/>
+                                                            {% elif list.number|slice:"-3:-2" == "6" %}
+                                                                d="M52.11,236.49c0-7.24-1.65-11.33-5.74-11.33-2.28,0-4.56,1.26-6.45,4.88l-1.81-.79c2.44-6.68,7.63-9.59,14.08-9.59,9.91,0,14.48,6,14.48,15,0,11.4-8.89,17.07-19.12,17.07-12.66,0-20.92-7.47-20.92-21.08,0-16.29,15.1-28.95,35.71-30.52l.47,4.48c-13.61,3.46-21.24,11.64-21.24,23.91,0,14.08,2.68,18.88,6,18.88C50.15,247.42,52.11,244.28,52.11,236.49Z"/>
+                                                            {% else %}
+                                                                d="M66.19,226c0,17.62-9.12,25.8-19.5,25.8S27.42,243.57,27.42,226s8.88-25.8,19.27-25.8S66.19,208.25,66.19,226Zm-19.5,21.47c3.3,0,5.74-4.17,5.74-21.47S50,204.4,46.69,204.4s-5.51,4.09-5.51,21.55S43.38,247.42,46.69,247.42Z"/>
+                                                            {% endif %}
+                                                    <path class="cls-3"
+                                                            {% if list.number|slice:"-2:-1" == "1" %}
+                                                          d="M107,246.48v4H74.53v-4l9.6-2.44H98.36Zm-9.13-46,1.1.79-.31,11.17v21.79c0,5.27.08,10.85.23,16.28H83.26c.16-5.43.24-11,.24-16.28V209.35L77,210v-5.11Z"
+                                                                />
+                                                            {% elif list.number|slice:"-2:-1" == "2" %}
+                                                                d="M73,242.7c3.38-3.3,6.76-6.53,9.91-9.67C90.18,225.71,94,221.15,94,213.68c0-6-2.83-9.28-7.4-9.28a15.4,15.4,0,0,0-7.39,1.73l6.45-3.78-1,7.71c-.79,6-3.86,7.16-6.38,7.16a6.12,6.12,0,0,1-5.58-3.46c0-8.81,8.73-13.61,19.27-13.61,11.88,0,17,6,17,13.68,0,7.87-6.6,14.48-20.06,22.19-2.83,1.65-5.58,3.22-8.25,4.87l-1.26-1.41h30.12v11H73Z"/>
+                                                            {% elif list.number|slice:"-2:-1" == "3" %}
+                                                                d="M85.46,222.8c5.59,0,9-2.52,9-9.44,0-6.13-2.75-9-7.39-9a21.26,21.26,0,0,0-5.59,1.1l5.27-3.15-1,7.63c-.55,4.25-3.46,5.66-6.37,5.66a5.74,5.74,0,0,1-4.64-2.36c-.55-9.2,7.39-13.13,16.12-13.13,12.59,0,18.17,5.58,18.17,12.66,0,5.27-3.93,11.09-15.57,12.51v-1.26c12.82,1.1,17.07,5.82,17.07,13.69,0,8.1-7.4,14-20.45,14-12.2,0-17.94-5.27-17.94-13.77a5.47,5.47,0,0,1,5.27-3.85c3.46,0,5.74,1.57,6.29,7.55l.71,7.94-4-3.38A9.64,9.64,0,0,0,85,247.42c6.61,0,10.15-3.07,10.15-10.38,0-6.37-3.38-9.68-9.28-9.68H83.5V222.8Z"/>
+                                                            {% elif list.number|slice:"-2:-1" == "4" %}
+                                                                d="M70.36,241.91V233.5L93,201.41H103.4v49.08h-13v-41.3h2.91L75.71,234.44l-1.57-2.75h36.1v10.22Z"/>
+                                                            {% elif list.number|slice:"-2:-1" == "5" %}
+                                                                d="M77.83,222.49a34.59,34.59,0,0,1,12.9-2.13c12.75,0,20.3,5.27,20.3,15.34,0,11-9.6,16.05-21.87,16.05C78.23,251.75,72,246.16,72,238a5.75,5.75,0,0,1,5.51-3.85c3.54,0,5.66,2,6.06,7.16l.55,7.7-2.28-2.67a8.28,8.28,0,0,0,4.56,1.1c5,0,8.89-3.7,8.89-10.15,0-7.07-3.07-10.77-8.42-10.77a29.75,29.75,0,0,0-7.47.86l-2.21-2,1.66-24h30v11H80.43l3.77-8.5-1.33,19.75h-5Z"/>
+                                                            {% elif list.number|slice:"-2:-1" == "6" %}
+                                                                d="M96.16,236.49c0-7.24-1.65-11.33-5.74-11.33-2.28,0-4.56,1.26-6.45,4.88l-1.81-.79c2.44-6.68,7.63-9.59,14.08-9.59,9.91,0,14.47,6,14.47,15,0,11.4-8.89,17.07-19.11,17.07-12.67,0-20.92-7.47-20.92-21.08,0-16.29,15.1-28.95,35.71-30.52l.47,4.48c-13.61,3.46-21.24,11.64-21.24,23.91,0,14.08,2.68,18.88,6,18.88C94.19,247.42,96.16,244.28,96.16,236.49Z"/>
+                                                            {% else %}
+                                                                d="M110.24,226c0,17.62-9.12,25.8-19.51,25.8S71.46,243.57,71.46,226s8.89-25.8,19.27-25.8S110.24,208.25,110.24,226ZM90.73,247.42c3.31,0,5.75-4.17,5.75-21.47S94,204.4,90.73,204.4s-5.5,4.09-5.5,21.55S87.43,247.42,90.73,247.42Z"/>
+                                                            {% endif %}
+                                                    <path class="cls-3"
+                                                            {% if list.number|slice:"-1:" == "1" %}
+                                                          d="M151.06,246.48v4H118.58v-4l9.59-2.44h14.24Zm-9.12-46,1.1.79-.32,11.17v21.79c0,5.27.08,10.85.24,16.28H127.31c.15-5.43.23-11,.23-16.28V209.35L121,210v-5.11Z"
+                                                                />
+                                                            {% elif list.number|slice:"-1:" == "2" %}
+                                                                d="M117.08,242.7c3.38-3.3,6.77-6.53,9.91-9.67,7.24-7.32,11.09-11.88,11.09-19.35,0-6-2.83-9.28-7.39-9.28a15.44,15.44,0,0,0-7.4,1.73l6.46-3.78-1,7.71c-.78,6-3.85,7.16-6.37,7.16a6.11,6.11,0,0,1-5.58-3.46c0-8.81,8.73-13.61,19.27-13.61,11.88,0,17,6,17,13.68,0,7.87-6.61,14.48-20.06,22.19-2.83,1.65-5.59,3.22-8.26,4.87l-1.26-1.41h30.13v11h-36.5Z"/>
+                                                            {% elif list.number|slice:"-1:" == "3" %}
+                                                                d="M129.51,222.8c5.58,0,9-2.52,9-9.44,0-6.13-2.76-9-7.4-9a21.21,21.21,0,0,0-5.58,1.1l5.27-3.15-1,7.63c-.55,4.25-3.46,5.66-6.37,5.66a5.77,5.77,0,0,1-4.64-2.36c-.55-9.2,7.4-13.13,16.13-13.13,12.58,0,18.17,5.58,18.17,12.66,0,5.27-3.94,11.09-15.58,12.51v-1.26c12.82,1.1,17.07,5.82,17.07,13.69,0,8.1-7.39,14-20.45,14-12.19,0-17.93-5.27-17.93-13.77a5.45,5.45,0,0,1,5.27-3.85c3.46,0,5.74,1.57,6.29,7.55l.71,7.94-4-3.38a9.64,9.64,0,0,0,4.64,1.18c6.6,0,10.14-3.07,10.14-10.38,0-6.37-3.38-9.68-9.28-9.68h-2.36V222.8Z"/>
+                                                            {% elif list.number|slice:"-1:" == "4" %}
+                                                                d="M114.41,241.91V233.5l22.65-32.09h10.38v49.08h-13v-41.3h2.92l-17.62,25.25-1.58-2.75h36.11v10.22Z"/>
+                                                            {% elif list.number|slice:"-1:" == "5" %}
+                                                                d="M121.88,222.49a34.59,34.59,0,0,1,12.9-2.13c12.74,0,20.29,5.27,20.29,15.34,0,11-9.59,16.05-21.86,16.05-10.94,0-17.15-5.59-17.15-13.77a5.73,5.73,0,0,1,5.5-3.85c3.54,0,5.67,2,6.06,7.16l.55,7.7-2.28-2.67a8.32,8.32,0,0,0,4.56,1.1c5,0,8.89-3.7,8.89-10.15,0-7.07-3.07-10.77-8.42-10.77a29.85,29.85,0,0,0-7.47.86l-2.2-2,1.65-24h30v11H124.47l3.78-8.5-1.34,19.75h-5Z"/>
+                                                            {% elif list.number|slice:"-1:" == "6" %}
+                                                                d="M140.21,236.49c0-7.24-1.65-11.33-5.75-11.33-2.28,0-4.56,1.26-6.44,4.88l-1.81-.79c2.43-6.68,7.63-9.59,14.08-9.59,9.91,0,14.47,6,14.47,15,0,11.4-8.89,17.07-19.12,17.07-12.66,0-20.92-7.47-20.92-21.08,0-16.29,15.1-28.95,35.71-30.52l.47,4.48c-13.6,3.46-21.23,11.64-21.23,23.91,0,14.08,2.67,18.88,6,18.88C138.24,247.42,140.21,244.28,140.21,236.49Z"/>
+                                                            {% elif list.number|slice:"-1:" == "7" %}
+                                                                d="M146.81,208.49l2.44,3.93H117.16v-11H153.5v6.84l-18.41,42.24H121.41l-.79-.79Z"/>
+                                                            {% elif list.number|slice:"-1:" == "8" %}
+                                                                d="M131.32,226.81l2,1.26c-3.93,4.17-5.19,7.32-5.19,11.49,0,4.56,2.76,7.86,6.53,7.86,4.09,0,5.82-3.07,5.82-6.13,0-4.33-2.59-7.63-11.4-11.41-7.71-3.22-12.19-8.34-12.19-15.1,0-8.89,7.78-14.63,18.56-14.63,12,0,16.75,5.27,16.75,11.09,0,4.88-3.46,8.89-13.84,12.19L136.51,222c3.46-4.87,4.25-7.55,4.25-11.24s-2.2-6.3-5.74-6.3a5.73,5.73,0,0,0-6,5.75c0,3.38,1.81,6.45,11.4,10.69,8.73,3.86,13.14,9.21,13.14,16.21,0,9-7.08,14.63-20.3,14.63-12,0-17.06-4.8-17.06-11.49C116.22,233.89,121.64,229.25,131.32,226.81Z"/>
+                                                            {% elif list.number|slice:"-1:" == "9" %}
+                                                                d="M136.27,226.66a7.7,7.7,0,0,0,5-1.66l1.65,1.58c-2.36,3-6.29,5.35-12.11,5.35-9.21,0-15.73-5.2-15.73-15,0-11.56,9.28-16.83,19.42-16.83,13.46,0,20.61,7.94,20.61,21.47,0,16.76-14.63,27.92-33.9,30.44l-.79-4.48c14.24-4.8,19.75-11.56,19.75-28,0-12.43-2-15.18-5.27-15.18-2.83,0-5.27,3.06-5.27,11.4C129.59,222.57,132,226.66,136.27,226.66Z"/>
+                                                            {% else %}
+                                                                d="M154.29,226c0,17.62-9.13,25.8-19.51,25.8s-19.27-8.18-19.27-25.8,8.89-25.8,19.27-25.8S154.29,208.25,154.29,226Zm-19.51,21.47c3.3,0,5.74-4.17,5.74-21.47s-2.44-21.55-5.74-21.55-5.51,4.09-5.51,21.55S131.48,247.42,134.78,247.42Z"/>
+                                                            {% endif %}
+                                                    <image class="cls-4" width="512" height="512"
+                                                           transform="translate(48 263) scale(0.07)"
+                                                           xlink:href="data:image/png;base64,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"/>
+                                                    <g class="cls-4">
+                                                        <path
+                                                                d="M90.16,290.27c1.74-1.7,3.48-3.36,5.1-5,3.73-3.77,5.71-6.12,5.71-10,0-3.08-1.45-4.78-3.8-4.78a8,8,0,0,0-3.81.89l3.32-1.94-.52,4c-.41,3.08-2,3.69-3.28,3.69A3.16,3.16,0,0,1,90,275.37c0-4.54,4.49-7,9.92-7,6.12,0,8.75,3.12,8.75,7.05s-3.4,7.45-10.33,11.42c-1.46.85-2.87,1.66-4.25,2.51l-.65-.73H109v5.67H90.16Z"/>
+                                                        <path
+                                                                d="M119.23,280c2.88,0,4.62-1.29,4.62-4.85,0-3.16-1.42-4.62-3.81-4.62a10.79,10.79,0,0,0-2.87.57l2.71-1.62-.52,3.92a3.08,3.08,0,0,1-3.28,2.92,3,3,0,0,1-2.39-1.22c-.29-4.73,3.8-6.76,8.3-6.76,6.48,0,9.35,2.88,9.35,6.52,0,2.71-2,5.71-8,6.44v-.65c6.6.57,8.79,3,8.79,7.05s-3.81,7.21-10.53,7.21c-6.27,0-9.23-2.72-9.23-7.09a2.8,2.8,0,0,1,2.71-2c1.78,0,3,.81,3.24,3.88l.37,4.09-2.07-1.74a4.94,4.94,0,0,0,2.39.61c3.4,0,5.22-1.58,5.22-5.35,0-3.28-1.74-5-4.77-5h-1.22V280Z"/>
+                                                    </g>
+                                                    <path class="cls-1"
+                                                          d="M165.46,0h-8.23a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,147.43,0H136.62a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,126.82,0H116a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,106.21,0H95.4a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,85.6,0H74.79a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,65,0H54.18a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,44.38,0H33.57a4.87,4.87,0,0,1-4.9,4.85A4.87,4.87,0,0,1,23.77,0H15.54A15.46,15.46,0,0,1,0,15.39V165.5A15.5,15.5,0,0,1,15.5,181h8.27a4.9,4.9,0,1,1,9.8,0H44.38a4.9,4.9,0,1,1,9.8,0H65a4.9,4.9,0,1,1,9.8,0H85.6a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h10.81a4.9,4.9,0,1,1,9.8,0h8.27A15.5,15.5,0,0,1,181,165.5V15.39A15.46,15.46,0,0,1,165.46,0Z"/>
+                                                    <path class="cls-2"
+                                                          d="M158.85,8H22.15A23.39,23.39,0,0,1,8,21.93V158.68A23.68,23.68,0,0,1,22.15,173h136.7A23.68,23.68,0,0,1,173,158.68V21.93A23.39,23.39,0,0,1,158.85,8Z"/>
+                                                    <path class="cls-5" {% if status == 0 %}
+                                                          style="fill:#bf0020;"
+                                                    {% elif status == 2 %} style="fill:#808080;"
+                                                    {% else %} style="fill:#2aaa8a;" {% endif %}
+                                                          d="M157.48,10h-134A25.17,25.17,0,0,1,10,23.27v134A25.57,25.57,0,0,1,23.52,171h134A25.57,25.57,0,0,1,171,157.3v-134A25.17,25.17,0,0,1,157.48,10Z"/>
+                                                    <g class="cls-6">
+                                                        <path
+                                                                d="M131.32,30l1.3.33a9,9,0,0,1,6.82,8c.2,2.82.12,5.67.13,8.51q0,11.43,0,22.86V90.07c0,2.87,0,5.7-3.16,8.3a11.77,11.77,0,0,1-7.36,2.61c-2.27,0-4.54,0-6.81,0H105.72l-5.89,0H80.36A2.8,2.8,0,0,1,80,101V95h51.34a4.26,4.26,0,0,0,4.22-4.23q0-10.23,0-20.45V49.67c0-3.51,0-7,0-10.51a4.12,4.12,0,0,0-3.77-4.09c-2-.12-4-.07-6-.08s-4.07,0-6.1,0h-8.57a35.6,35.6,0,0,0-6,1H96.69s-3.9-.14-5.85-.14c-2.85,0-5.69,0-8.54.14H74.12c-2.87-.14-5.73-.13-8.6-.13s-5.53,0-8.3,0c-2.11,0-4.22,0-6.32.09A4.06,4.06,0,0,0,47.06,40c0,2.7,0,5.41,0,8.12V62.46c0,.1,0,.19,0,.34a18.73,18.73,0,0,0-5,1.93V61.81q0-4.83,0-9.66c0-4.36-.06-8.72,0-13.07A8.84,8.84,0,0,1,47.26,31,16.87,16.87,0,0,1,50,30.11l.32-.11Z"/>
+                                                        <path
+                                                                d="M43.48,150a9.3,9.3,0,0,1-1.5-1.09,2,2,0,0,1-.4-1.21c0-2.63,0-5.26,0-7.89a9.6,9.6,0,0,1,6.85-9.13,16.23,16.23,0,0,1,3.94-.49c2.91-.07,5.82,0,8.72,0,3.27,0,6.41.46,8.9,3.71a11.78,11.78,0,0,1,2.3,7c0,2.24,0,4.48,0,6.72,0,1.13-.67,1.91-2,2.39Z"/>
+                                                        <path
+                                                                d="M77.54,150c-.69-.3-1.41-.59-1.68-1.39a3.81,3.81,0,0,1-.24-1.15c0-2.53-.05-5.06,0-7.59a9.72,9.72,0,0,1,8.17-9.5,48.82,48.82,0,0,1,6.63-.2c2.33,0,4.67,0,7,.1a9.52,9.52,0,0,1,8.66,7.63,24.55,24.55,0,0,1,.27,4.21c0,1.63,0,3.27,0,4.9a2.75,2.75,0,0,1-1.93,3Z"/>
+                                                        <path
+                                                                d="M111.61,150a2.72,2.72,0,0,1-1.94-3.11,49.18,49.18,0,0,0,0-6.07,9.72,9.72,0,0,1,9.23-10.58c3.45-.16,6.92-.05,10.38-.07a12,12,0,0,1,4.87.71c3.51,1.51,5.74,4.11,6.08,8,.25,2.94.14,5.92.12,8.89A2.45,2.45,0,0,1,138.5,150Z"/>
+                                                        <path
+                                                                d="M75.14,115.08c-2,0-3.88,0-5.78,0a1.06,1.06,0,0,1-1.2-.78,12,12,0,0,0-15.66-6.67l-.34.13H52V79.3a.83.83,0,0,0-.93-.91.91.91,0,0,0-1,1q0,5.86,0,11.71c0,4.2,0,8.41,0,12.61a4.39,4.39,0,0,1-8.74.62,30.37,30.37,0,0,1-.1-3.7q0-11.34,0-22.7c0-1.25,0-2.51,0-3.76a6.58,6.58,0,0,1,6.57-6.63c8.92,0,17.85,0,26.77,0,4.12,0,8.23-.41,12.35-.39a7.94,7.94,0,0,0,4.65-1.58C95,63.21,98.48,61,102,58.77a5,5,0,0,1,7.36,2A5.1,5.1,0,0,1,107.62,67c-3.21,2.11-6.45,4.17-9.68,6.25-1.24.81-2.51,1.58-3.73,2.44a7,7,0,0,1-4,1.26c-3,0-6.09.21-9.14.32-1.27,0-2.54.06-3.82.12a2.22,2.22,0,0,0-2.12,2.22q0,9.94,0,19.9v14.93C75.17,114.59,75.16,114.73,75.14,115.08Z"/>
+                                                        <path
+                                                                d="M72,56.56A9.07,9.07,0,0,1,63,65.65a9.11,9.11,0,0,1-.33-18.22A9.09,9.09,0,0,1,72,56.56Z"/>
+                                                        <path
+                                                                d="M48.12,118.7a8.8,8.8,0,1,1,8.49,8.86A8.74,8.74,0,0,1,48.12,118.7Z"/>
+                                                        <path
+                                                                d="M82.19,118.71a8.79,8.79,0,1,1,8.37,8.84A8.74,8.74,0,0,1,82.19,118.71Z"/>
+                                                        <path
+                                                                d="M125,127.53a8.73,8.73,0,0,1-8.81-8.82,8.8,8.8,0,1,1,17.6.23A8.69,8.69,0,0,1,125,127.53Z"/>
+                                                        <path
+                                                                d="M121.41,92h-6.09c-.8,0-1.08-.28-1.09-1.07,0-1.23,0-2.47,0-3.7,0-.79.33-1.12,1.13-1.12h12.12c.92,0,1.23.31,1.22,1.21v3.52c0,.89-.28,1.17-1.19,1.17Z"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+
+                                        <!-- <div class="Tooltip"> -->
+                                        <!-- <div>Available: &nbsp;{% if status == 0 %}
+                                                No
+                                                {%else %}
+                                                Yes{% endif %}</div>
+                                            <div>Capacity: &nbsp; {{ list.capacity }}</div> -->
+                                        <!-- </div> -->
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+        <div id="addUserModal" modal-center="" class="fixed flex flex-col
+            transition-all duration-300 ease-in-out left-2/4 z-drawer
+            -translate-x-2/4 -translate-y-2/4 hidden show ">
+            <div class="w-screen md:w-[30rem] bg-white shadow rounded-md
+            dark:bg-zink-600">
+                <div class="flex items-center justify-between p-4 border-b
+            border-slate-200 dark:border-zink-500">
+                    <h5 class="text-16">Booking Confirmation</h5>
+                    <button data-modal-close="addUserModal" id="popupButton" class="transition-all duration-200 ease-linear text-slate-500
+            hover:text-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" data-lucide="x" class="lucide lucide-x size-5">
+                            <path d="M18 6 6
+            18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4
+                                         overflow-y-auto">
+                    <form action="#!">
+                        <div class="mb-3">
+                            <label for="bookingDate" class="inline-block mb-2
+                                    text-base font-medium">Date</label>
+                            <input type="date" id="bookingDate" name="date" required="" readonly class="form-input
+                                    border-slate-200 dark:border-zink-500 focus:outline-none
+                                    focus:border-custom-500 disabled:bg-slate-100
+                                    dark:disabled:bg-zink-600 disabled:border-slate-300
+                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                                    dark:focus:border-custom-800 placeholder:text-slate-400
+                                    dark:placeholder:text-zink-200">
+                        </div>
+                        <div class="mb-3">
+                            <label for="startTime" class="inline-block
+                                    mb-2 text-base font-medium">start time</label>
+                            <input type="time" id="startTime" name="start_time" required="" readonly class="form-input border-slate-200 dark:border-zink-500
+                                                    focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                            dark:disabled:bg-zink-600 disabled:border-slate-300
+                            dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                            disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                            dark:focus:border-custom-800 placeholder:text-slate-400
+                            dark:placeholder:text-zink-200 flatpickr-input" placeholder="Select
+                            date" data-provider="flatpickr" data-date-format="d M, Y" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label for="endTime" class="inline-block
+                            mb-2 text-base font-medium">End Time</label>
+                            <input type="time" id="endTime" name="end_time" required="" readonly class="form-input border-slate-200 dark:border-zink-500
+                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                        dark:disabled:bg-zink-600 disabled:border-slate-300
+                        dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                        disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                        dark:focus:border-custom-800 placeholder:text-slate-400
+                        dark:placeholder:text-zink-200" placeholder="Enter name" required="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="statusSelect" class="inline-block mb-2
+                            text-base font-medium">Reason</label>
+                            <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true"
+                                 aria-expanded="false">
+                                <div class="choices__inner"><select name="reason" id="reason"
+                                                                    style="width: 600px; height : 44.222px ; border-bottom-left-radius: 5px ;border-bottom-right-radius : 5px;border-top-left-radius :5px; border-top-right-radius :5px ; font-family: Poppins,sans-serif;">
+                                    <option disabled selected>Select an option</option>
+                                    {% for choice in reason_choices %}
+                                        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+
+                                    {% endfor %}
+
+                                </select>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <input class="form-input border-slate-200 dark:border-zink-500
+                            focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                            dark:disabled:bg-zink-600 disabled:border-slate-300
+                            dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                            disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                            dark:focus:border-custom-800 placeholder:text-slate-400
+                            dark:placeholder:text-zink-200" type="text" placeholder="Type Reason..." id="reason_text"
+                               name="reason_text">
+
+                        <div class="flex justify-end gap-4 mt-4">
+                            <button type="submit"
+                                    class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--end add user-->
+    </form>
+{% endblock %}
+
+
+{% block footer %}
+    <div class="relative items-center h-header md:flex flex-col"
+         style="position: fixed;bottom:0;z-index: 100000;height:auto; width:100vw;">
+        <div class="flex gap-x-4 px-4 py-3 mb-4 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50">
+            <div class="grow">
+                <h6 class="mb-1 text-16">Confirm Booking</h6>
+                <ul class="flex items-center gap-3">
+                    <li class="text-slate-500">Date: 10 July, 2023</li>
+                    <li class="text-slate-500">Time: 5:00PM - 7:00PM</li>
+                </ul>
+            </div>
+            <button type="button" data-modal-target="addUserModal" onclick="validateTime()"
+                    class="text-white bg-green-500 border-green-500 btn hover:text-white hover:bg-green-600 hover:border-green-600 focus:text-white focus:bg-green-600 focus:border-green-600 focus:ring focus:ring-green-100 active:text-white active:bg-green-600 active:border-green-600 active:ring active:ring-green-100 dark:ring-green-400/10">
+                Next
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'script/home.js' %}"></script>
+{% endblock %}

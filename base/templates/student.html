@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% load custom_filters %}
+
+
+{% block content %}
+    <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+        <div class="grow">
+            <h5 class="text-16">Student</h5>
+        </div>
+        <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+            <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                <a href="{% url 'home' %}" class="text-slate-400 dark:text-zink-200">Home</a>
+            </li>
+            <li class="text-slate-700 dark:text-zink-100">
+                Stu
+            </li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-12 gap-x-5">
+        <div class="order-1 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-green-100 dark:bg-green-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-green-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-green-200/50 dark:text-green-500/20 ltr:-right-10 rtl:-left-10"></i>
+                <h3 class="text-slate-500 dark:text-slate-200">Name</h3>
+
+                <p class="mt-5 mb-2" style="font-size:15px">{{ student.Full_name }} {{ student.Last_name }}</p>
+            </div>
+        </div><!--end col-->
+
+        <div class="order-2 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-orange-100 dark:bg-orange-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-orange-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="list-filter"
+                   class="absolute top-0 stroke-1 size-32 text-orange-200/50 dark:text-orange-500/20 ltr:-right-10 rtl:-left-10"></i>
+
+                <h3 class="text-slate-500 dark:text-slate-200">Attendance</h3>
+                <p class="mt-5 mb-2" style="font-size:15px"><span class="counter-value"
+                                                                  data-target="{{ no_of_attendance }}"">0</span>
+                </p>
+
+
+            </div>
+        </div><!--end col-->
+        <div class="order-3 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-sky-100 dark:bg-sky-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-sky-500/20 relative overflow-hidden">
+            <button onclick="window.location.href='{% url 'student' %}'" name="TestScore">
+                <div class="card-body">
+                    <i data-lucide="list-filter"
+                       class="absolute top-0 stroke-1 size-32 text-sky-200/50 dark:text-sky-500/20 ltr:-right-10 rtl:-left-10"></i>
+                    <h3 class="text-slate-500 dark:text-slate-200">Test Score</h3>
+                    <p class="mt-5 mb-2" style="font-size:15px; text-align: left;">
+                        <span class="counter-value" data-target="{{ no_of_attendance }}">0</span>
+                    </p>
+                </div>
+            </button>
+        </div><!--end col-->
+
+        <div class="order-4 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-purple-100 dark:bg-purple-500/20 card 2xl:col-span-3 group-data-[skin=bordered]:border-purple-500/20 relative overflow-hidden">
+            <div class="card-body">
+                <i data-lucide="kanban"
+                   class="absolute top-0 stroke-1 size-32 text-purple-200/50 dark:text-purple-500/20 ltr:-right-10 rtl:-left-10"></i>
+
+                <h3 class="text-slate-500 dark:text-slate-200">Feedback</h3>
+
+                <p class="mt-5 mb-2" style="font-size:15px">This student is very engaged. </p>
+            </div>
+        </div><!--end col-->
+        <div class="order-11 col-span-12 card xl:col-span-6">
+            <div class="px-5 pt-4">
+                <div class="flex items-center">
+                    <h6 class="text-15 grow">Student Feedback</h6>
+
+                </div>
+            </div>
+            <div class="card-body">
+
+                <form action="{% url 'student' %}" method="post">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+                        <div class="xl:col-span-12">
+                            <label for="inputValue" class="inline-block mb-2 text-base font-medium">What did you like
+                                the most about this session?</label>
+                            <input type="text" name="q1" id="inputValue"
+                                   class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                   placeholder="Answer" value="">
+                        </div><!--end col-->
+                        <div class="xl:col-span-12">
+                            <label for="inputValue" class="inline-block mb-2 text-base font-medium">Was the content easy
+                                to understand?</label>
+                            <input type="text" name="q2" id="inputValue"
+                                   class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                   placeholder="Answer" value="">
+                        </div><!--end col-->
+                        <div class="xl:col-span-12">
+                            <label for="inputValue" class="inline-block mb-2 text-base font-medium">Were the activities
+                                and exercises engaging and helpful?</label>
+                            <input type="text" name="q3" id="inputValue"
+                                   class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                   placeholder="Answer" value="">
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="inputValue" class="inline-block mb-2 text-base font-medium">Were there any
+                                topics you felt were not covered adequately?</label>
+                            <input type="text" name="q4" id="inputValue"
+                                   class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                   placeholder="Answer" value="">
+                        </div>
+                        <div class="xl:col-span-12">
+                            <label for="inputValue" class="inline-block mb-2 text-base font-medium">Any additional
+                                comments and suggestions?</label>
+                            <input type="text" name="q5" id="inputValue"
+                                   class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                   placeholder="Answer" value="">
+                        </div>
+
+                        <div class="relative inline-block w-8 align-middle transition duration-200 ease-in ltr:mr-2 rtl:ml-2">
+                            <input type="checkbox" name="attendance" id="attendance"
+                                   class="absolute block w-4 h-4 transition duration-300 ease-linear border-2 rounded-full appearance-none cursor-auto border-slate-200 dark:border-zink-500 bg-white/80 dark:bg-zink-400 peer/published checked:bg-white dark:checked:bg-white ltr:checked:right-0 rtl:checked:left-0 checked:bg-none checked:border-custom-500 dark:checked:border-custom-500 arrow-none"
+                                   >
+                            <label for="disabledSwitch"
+                                   class="block h-4 overflow-hidden transition duration-300 ease-linear border rounded-full cursor-auto border-slate-200 dark:border-zink-500 bg-slate-200 dark:bg-zink-600 peer-checked/published:bg-custom-500 peer-checked/published:border-custom-500"></label>
+                        </div>
+                        <input type="hidden" name="preference_id" value="1"/>
+                        <label for="disabledSwitch" class="inline-block text-sm font-medium">Custom Switch</label>
+                    </div><!--end grid-->
+                    <div class="flex justify-end mt-6 gap-x-4">
+                        <button type="submit" name="feedback"
+                                class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                            Send
+                        </button>
+
+                    </div>
+                </form><!--end form-->
+            </div>
+        </div><!--end col-->
+        <div class="order-11 col-span-12 xl:col-span-3">
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="mb-4 text-15">Upcoming Timeline</h6>
+                    <div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Monday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Tuesday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Wednesday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Thursday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Friday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Saturday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5">
+                            <h6 class="mb-4 text-15">Sunday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end card-->
+
+
+        </div><!--end grid-->
+        <div class="order-11 col-span-12 xl:col-span-3">
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="mb-4 text-15">Previous Timeline</h6>
+                    <div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Monday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Tuesday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Wednesday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Thursday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Friday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                        <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500">
+                            <h6 class="mb-4 text-15">Saturday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+
+                        <div class="relative ltr:pl-6 rtl:pr-6 after:absolute after:w-2 after:h-2 after:bg-custom-500 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5">
+                            <h6 class="mb-4 text-15">Sunday</h6>
+                            <p class="text-sm text-slate-500 dark:text-zink-200">Volunteer: Mr Raj</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--end grid-->
+
+
+    </div>
+{% endblock %}
