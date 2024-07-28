@@ -41,7 +41,7 @@ Follow these steps to set up the project locally:
 git clone https://github.com/cfgbengaluru24/Team-65.git
 
 # Navigate to the project directory
-cd cfg
+cd Team-65
 
 # Create a virtual environment
 python -m venv venv
