@@ -55,6 +55,9 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+# write the migrations
+python manage.py makemigrations
+
 # Set up the database
 python manage.py migrate
 
